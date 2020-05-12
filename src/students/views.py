@@ -1,7 +1,7 @@
 import random
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render # noqa -  imported but unused
 
 from faker import Faker
 
