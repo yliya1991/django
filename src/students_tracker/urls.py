@@ -20,8 +20,8 @@ from students import views
 
 from teachers import views as t_views
 from teachers import views as f_views
-from group import views as g_views
 
+from group import views as g_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
