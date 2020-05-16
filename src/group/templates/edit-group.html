@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ form_name }}</title>
+    <title>EDIT GROUP</title>
 </head>
 <body>
 
-{{ form_name }}
+EDIT GROUP
 <form method="post">
     {% csrf_token %}
-    {{ create_form.as_p }}
+    {{ edit_form.as_p }}
     <button type="submit">Submit</button>
+    <a href="{% url 'group:delete' pk=group.id %}"><input type="button" value="Delete"></a>
 </form>
 
 </body>

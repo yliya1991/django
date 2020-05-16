@@ -15,3 +15,6 @@ class Teacher(models.Model):
 
     def full_info(self):
         return f'{self.id} {self.first_name} {self.last_name} {self.age} {self.specification} {self.active_groups}'
+
+    def info_teachers(self):
+        return f'{self.first_name} {self.last_name} {self.age} {self.specification}' # noqa'
