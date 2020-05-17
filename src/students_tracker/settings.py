@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     # pip apps
     'django_extensions',
+    'debug_toolbar',
+    'silk',
 
     # custom
     'students',
@@ -56,6 +58,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'teachers.middlewares.SimpleMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'students_tracker.urls'
@@ -131,3 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

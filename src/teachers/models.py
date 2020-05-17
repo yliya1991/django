@@ -8,6 +8,7 @@ class Teacher(models.Model):
     specification = models.CharField(max_length=32)
     active_groups = models.PositiveSmallIntegerField()
     password = models.CharField(max_length=120, default='')
+    phone = models.CharField(max_length=24, default='')
 
     @property
     def info(self):
@@ -15,3 +16,13 @@ class Teacher(models.Model):
 
     def full_info(self):
         return f'{self.id} {self.first_name} {self.last_name} {self.age} {self.specification} {self.active_groups}'
+
+    def info_teachers(self):
+        return f'{self.first_name} {self.last_name} {self.age} {self.specification}' # noqa'
+
+
+class Logger(models.Model):
+    method = models.CharField(max_length=10)
+    path = models.CharField(max_length=64)
+    execution_time = models.PositiveSmallIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
