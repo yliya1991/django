@@ -18,4 +18,4 @@ class Group(models.Model):
                f' {self.form_of_training}'
 
     def full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.first_name} {self.last_name} {self.group_code} {self.group_number} {self.form_of_training}'
