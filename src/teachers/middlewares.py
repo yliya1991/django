@@ -21,6 +21,6 @@ class SimpleMiddleware:
 
             with open('admin_logs.log', 'a') as f:
                 log = Logger.objects.create(method=request.method, path=request.path, execution_time=diff)
-                f.write(f'{now} | {log.path} | {log.method} | {log.execution_time} ms | {log.created}\n')
+                f.write(f'{now} | {log.path} | {log.method} | {log.execution_time} ms | {log.created}\n') # noqa
 
         return response

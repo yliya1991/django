@@ -23,3 +23,9 @@ class TeacherCreateForm (forms.ModelForm):
                 raise forms.ValidationError('enter numbers only')
 
         return clened_phone
+
+
+class ContactUsForm(forms.Form):
+    title = forms.CharField(label='Title', max_length=100)
+    email_from = forms.EmailField(label='Your email', max_length=75)
+    message = forms.CharField(label='Message', max_length=1024)

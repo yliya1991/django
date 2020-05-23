@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from teachers.forms import TeacherCreateForm
+from teachers.forms import ContactUsForm, TeacherCreateForm
 from teachers.models import Teacher
+from teachers.tasks import send_lmail
 
 
 def show_teachers(request):
@@ -61,7 +62,29 @@ def edit_teacher(request, pk):
     return render(request, 'edit-teacher.html', context=context)
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def delete_teacher(request, pk):
     teacher = get_object_or_404(Teacher, id=pk)
     teacher.delete()
     return redirect(reverse('teachers:list'))
+
+
+def email(request):
+    if request.method == 'POST':
+        email_form = ContactUsForm(request.POST)
+
+        if email_form.is_valid():
+            send_lmail.delay(request.POST)
+            return redirect(reverse('index'))
+            ContactUsForm.save()
+            email.success(request, 'Message sent successfully')
+            return redirect('email:email')
+        else:
+            email.error(request, 'Error sending your Message')
+
+    elif request.method == 'GET':
+        email_form = ContactUsForm()
+    return render(request, 'email_form.html', context={'email_form': email_form})

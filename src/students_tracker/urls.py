@@ -18,15 +18,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
 
-from students import views
+from teachers import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('teachers/', include('teachers.urls')),
     path('group/', include('group.urls')),
     path('', views.index, name='index'),
-
-    #path('students/', include('students.urls')), # noqa
+    path('email/', views.email, name='email'),
 ]
 
 if settings.DEBUG:
