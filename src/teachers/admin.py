@@ -13,7 +13,7 @@ class TeacherAdmin(admin.ModelAdmin):
         queryset = super().get_queryset(request)
 
         if not request.user.is_superuser:
-            queryset = queryset.filter(age__=18)
+            queryset = queryset.filter(age__gt=18)
 
         return queryset
 
