@@ -9,32 +9,30 @@ Function views
 Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
+Including another URL conf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
-from group import views as g_views
-
-from students import views
-
-from teachers import views as t_views
-from teachers import views as f_views
-
+from teachers import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    path('', t_views.index),
-    path('', g_views.index),
-
-
-    path('generate-student/', views.generate_student),
-    path('generate-students/', views.generate_students),
-    path('teachers/', t_views.teachers_generate),
-    path('create1/', f_views.create_teacher),
-    path('create2/', g_views.create_group),
-
+    path('teachers/', include('teachers.urls')),
+    path('group/', include('group.urls')),
+    path('', views.index, name='index'),
+    path('email/', views.email, name='email'),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns
+
+urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]

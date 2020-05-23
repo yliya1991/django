@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
+    <title>{{ form_name }}</title>
 </head>
 <body>
-Create Group
+
+{{ form_name }}
 <form method="post">
     {% csrf_token %}
-    {{ create_form.as_p}}
+    {{ create_form.as_p }}
     <button type="submit">Submit</button>
 </form>
 

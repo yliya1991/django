@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+from celery.schedules import crontab
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
 
     # pip apps
     'django_extensions',
+    'debug_toolbar',
+    'silk',
 
     # custom
     'students',
@@ -56,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'teachers.middlewares.SimpleMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'students_tracker.urls'
@@ -118,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -131,3 +139,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+CELERY_BROKER_URL = 'amqp://localhost'
+
+
+CELERY_BEAT_SCHEDULE = {
+    'log_del': {
+        'task': 'teachers.tasks.del_logs',
+        'schedule': crontab(minute=0, hour=0)
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'hilleldjango123456@gmail.com'
+EMAIL_HOST_PASSWORD = '123456hillel'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

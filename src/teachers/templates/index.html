@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
 </head>
-<body>
-Forms Teachers and Groups
-<br><br/>
-<a href="/create1/">Create Teachers</a>
-<br><br/>
-<a href="/create2/">Create Groups</a>
+
+<a href="{% url 'teachers:list' %}">Teachers</a></br>
+<a href="{% url 'email' %}"><input type="button" value="ContactUS"></a>
 
 </body>
 </html>
