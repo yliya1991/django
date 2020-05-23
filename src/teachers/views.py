@@ -1,6 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
+<<<<<<< HEAD
 from teachers.forms import ContactUsForm, TeacherCreateForm
+=======
+from teachers.forms import TeacherCreateForm
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e
 from teachers.models import Teacher
 from teachers.tasks import send_lmail
 
@@ -62,14 +66,18 @@ def edit_teacher(request, pk):
     return render(request, 'edit-teacher.html', context=context)
 
 
+<<<<<<< HEAD
 def index(request):
     return render(request, 'index.html')
 
 
+=======
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e
 def delete_teacher(request, pk):
     teacher = get_object_or_404(Teacher, id=pk)
     teacher.delete()
     return redirect(reverse('teachers:list'))
+<<<<<<< HEAD
 
 
 def email(request):
@@ -88,3 +96,5 @@ def email(request):
     elif request.method == 'GET':
         email_form = ContactUsForm()
     return render(request, 'email_form.html', context={'email_form': email_form})
+=======
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e

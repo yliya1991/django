@@ -14,17 +14,25 @@ Including another URL conf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
+<<<<<<< HEAD
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
 
 from teachers import views
+=======
+from django.contrib import admin
+from django.urls import include, path
+
+from students import views
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('teachers/', include('teachers.urls')),
     path('group/', include('group.urls')),
     path('', views.index, name='index'),
+<<<<<<< HEAD
     path('email/', views.email, name='email'),
 ]
 
@@ -36,3 +44,15 @@ if settings.DEBUG:
                   ] + urlpatterns
 
 urlpatterns += [url(r'^silk/', include('silk.urls', namespace='silk'))]
+=======
+
+    path('students/', include('students.urls')),
+]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e

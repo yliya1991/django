@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     # pip apps
     'django_extensions',
     'debug_toolbar',
+<<<<<<< HEAD
     'silk',
+=======
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e
 
     # custom
     'students',
@@ -62,8 +65,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+<<<<<<< HEAD
     'teachers.middlewares.SimpleMiddleware',
     'silk.middleware.SilkyMiddleware',
+=======
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e
 ]
 
 ROOT_URLCONF = 'students_tracker.urls'
@@ -143,6 +149,7 @@ STATIC_URL = '/static/'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+<<<<<<< HEAD
 
 CELERY_BROKER_URL = 'amqp://localhost'
 
@@ -161,3 +168,5 @@ EMAIL_HOST_USER = 'hilleldjango123456@gmail.com'
 EMAIL_HOST_PASSWORD = '123456hillel'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+=======
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e

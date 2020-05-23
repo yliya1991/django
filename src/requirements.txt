@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 amqp==2.5.2
 asgiref==3.2.7
 autopep8==1.5.2
+=======
+asgiref==3.2.7
+>>>>>>> a8aa4e4ba879bca99be5dfe897736f99e6750c8e
 backcall==0.1.0
 billiard==3.6.3.0
 celery==4.4.2
