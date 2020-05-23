@@ -14,7 +14,7 @@ class GroupAdmin(admin.ModelAdmin):
         queryset = super().get_queryset(request)
 
         if not request.user.is_superuser:
-            queryset = queryset.filter(group_code__=10)
+            queryset = queryset.filter(group_code=10)
 
         return queryset
 
