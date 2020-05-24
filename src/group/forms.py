@@ -13,4 +13,6 @@ class GroupCreateForm(forms.ModelForm):
             'group_number',
             'training_completed',
             'form_of_training',
+            'head',
+            'curator'
         )
