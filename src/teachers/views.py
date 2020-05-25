@@ -79,7 +79,8 @@ def email(request):
         if email_form.is_valid():
             send_lmail.delay(request.POST)
             return redirect(reverse('index'))
-            ContactUsForm.save()
+        
+        if ContactUsForm.save()
             email.success(request, 'Message sent successfully')
             return redirect('email:email')
         else:
